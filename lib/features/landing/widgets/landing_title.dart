@@ -10,6 +10,8 @@ class LandingTitle extends StatefulWidget {
 
 class _LandingTitleState extends State<LandingTitle> with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
+  late final Animation<double> _scaleAnimationI;
+  late final Animation<double> _scaleAnimationAM;
   late final Animation<double> _fadeAnimationI;
   late final Animation<double> _fadeAnimationAM;
   late final Animation<double> _fadeAnimationLAM;
@@ -18,6 +20,16 @@ class _LandingTitleState extends State<LandingTitle> with SingleTickerProviderSt
   void initState() {
     super.initState();
     _controller = AnimationController(duration: const Duration(seconds: 3), vsync: this);
+
+    _scaleAnimationI = Tween<double>(
+      begin: 0.5,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: const Interval(0.0, 0.33, curve: Curves.easeOut)));
+
+    _scaleAnimationAM = Tween<double>(
+      begin: 0.5,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: const Interval(0.34, 0.66, curve: Curves.easeOut)));
 
     _fadeAnimationI = Tween<double>(
       begin: 0.0,
@@ -52,8 +64,14 @@ class _LandingTitleState extends State<LandingTitle> with SingleTickerProviderSt
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        FadeTransition(opacity: _fadeAnimationI, child: Text('I', style: titleStyle)),
-        FadeTransition(opacity: _fadeAnimationAM, child: Text('AM', style: titleStyle)),
+        FadeTransition(
+          opacity: _fadeAnimationI,
+          child: ScaleTransition(scale: _scaleAnimationI, child: Text('I', style: titleStyle)),
+        ),
+        FadeTransition(
+          opacity: _fadeAnimationAM,
+          child: ScaleTransition(scale: _scaleAnimationAM, child: Text('AM', style: titleStyle)),
+        ),
         FadeTransition(opacity: _fadeAnimationLAM, child: BounceTypewriterText(text: 'LAM', style: titleStyle)),
       ],
     );

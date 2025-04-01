@@ -34,8 +34,8 @@ class _LandingSubTitleState extends State<LandingSubTitle> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(_stacks[_currentIndex], style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-        Text(" developer", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
+        Text(_stacks[_currentIndex], style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
+        Text(" developer", style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
       ],
     );
   }
