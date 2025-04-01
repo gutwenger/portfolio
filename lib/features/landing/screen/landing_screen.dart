@@ -17,7 +17,7 @@ class _LandingScreenState extends ConsumerState<LandingScreen> {
     return Scaffold(
       body: Center(
         child: Column(
-          spacing: 20,
+          spacing: 52,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[

@@ -42,11 +42,12 @@ class _LandingCallToActionsState extends State<LandingCallToActions> with Ticker
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: List.generate(_items.length, (index) {
         return SlideTransition(
           position: _slideAnimations[index],
           child: Padding(
-            padding: EdgeInsets.only(right: index < _items.length - 1 ? 24.0 : 0),
+            padding: EdgeInsets.only(right: index < _items.length - 1 ? 28.0 : 0),
             child: LandingCallToActionsItem(label: _items[index]['label']!, route: _items[index]['route']!),
           ),
         );

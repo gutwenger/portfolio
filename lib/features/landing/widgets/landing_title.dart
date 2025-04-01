@@ -14,11 +14,7 @@ class LandingTitle extends StatelessWidget {
       children: [
         Text('I', style: titleStyle),
         Text('AM', style: titleStyle),
-        BounceTypewriterText(
-          text: 'LAM',
-          style: titleStyle,
-          duration: const Duration(milliseconds: 3000), // 1.5s for typing and 1.5s for deleting
-        ),
+        BounceTypewriterText(text: 'LAM', style: titleStyle),
       ],
     );
   }
