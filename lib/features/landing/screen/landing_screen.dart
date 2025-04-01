@@ -23,7 +23,7 @@ class _LandingScreenState extends ConsumerState<LandingScreen> {
           children: <Widget>[
             // Title
             const LandingTitle(),
-            const LandingSubTitle(),
+            LandingSubTitle(),
             const LandingCallToActions(),
           ],
         ),
