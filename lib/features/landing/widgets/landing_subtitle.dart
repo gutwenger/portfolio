@@ -16,7 +16,7 @@ class _LandingSubTitleState extends State<LandingSubTitle> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+    _timer = Timer.periodic(Duration(seconds: 2), (Timer timer) {
       setState(() {
         _currentIndex = (_currentIndex + 1) % _stacks.length;
       });
@@ -31,6 +31,29 @@ class _LandingSubTitleState extends State<LandingSubTitle> {
 
   @override
   Widget build(BuildContext context) {
-    return Text("${_stacks[_currentIndex]} developer", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold));
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 150,
+          child: AnimatedSwitcher(
+            duration: Duration(milliseconds: 800),
+            transitionBuilder: (child, animation) {
+              final offsetAnimation = Tween<Offset>(begin: Offset(0, 1), end: Offset(0, 0)).animate(animation);
+              return SlideTransition(
+                position: offsetAnimation,
+                child: FadeTransition(opacity: animation, child: child),
+              );
+            },
+            child: Text(
+              _stacks[_currentIndex],
+              key: ValueKey<String>(_stacks[_currentIndex]),
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        Text(" developer", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
+      ],
+    );
   }
 }
