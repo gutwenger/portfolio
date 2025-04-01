@@ -33,6 +33,7 @@ class _LandingCallToActionsItemState extends State<LandingCallToActionsItem> {
         curve: Curves.easeInOut,
         child: InkWell(
           hoverColor: Colors.transparent,
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
           onTap: () {
             context.beamToNamed(widget.route);
           },
