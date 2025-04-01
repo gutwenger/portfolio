@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:beamer/beamer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/core/utils/locations.dart';
 
-void main() {
+/// Preload the Google Font by laying out a dummy text.
+Future<void> _preloadFonts() async {
+  final textPainter = TextPainter(
+    text: TextSpan(text: 'sample', style: GoogleFonts.dmSerifText(fontSize: 20)),
+    textDirection: TextDirection.ltr,
+  );
+  textPainter.layout();
+  // Optionally, wait a moment to ensure the font has fully loaded.
+  await Future.delayed(Duration(milliseconds: 100));
+}
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await _preloadFonts();
   runApp(ProviderScope(child: MyApp()));
 }
 
@@ -25,7 +39,7 @@ class MyApp extends StatelessWidget {
       routerDelegate: _beamerDelegate,
       routeInformationParser: BeamerParser(),
       backButtonDispatcher: BeamerBackButtonDispatcher(delegate: _beamerDelegate),
-      // Text theme
+      // Apply the Google Font theme.
       theme: ThemeData(textTheme: GoogleFonts.dmSerifTextTextTheme(Theme.of(context).textTheme)),
     );
   }
