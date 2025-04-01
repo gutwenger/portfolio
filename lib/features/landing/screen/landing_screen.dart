@@ -16,17 +16,20 @@ class _LandingScreenState extends ConsumerState<LandingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          spacing: 52,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            // Title
-            const LandingTitle(),
-            LandingSubTitle(),
-            const LandingCallToActions(),
-          ],
+      body: Material(
+        color: Colors.white,
+        child: Center(
+          child: Column(
+            spacing: 52,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              // Title
+              const LandingTitle(),
+              LandingSubTitle(),
+              const LandingCallToActions(),
+            ],
+          ),
         ),
       ),
     );
