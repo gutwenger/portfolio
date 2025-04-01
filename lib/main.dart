@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:beamer/beamer.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/core/utils/locations.dart';
 
 void main() {
@@ -24,6 +25,8 @@ class MyApp extends StatelessWidget {
       routerDelegate: _beamerDelegate,
       routeInformationParser: BeamerParser(),
       backButtonDispatcher: BeamerBackButtonDispatcher(delegate: _beamerDelegate),
+      // Text theme
+      theme: ThemeData(textTheme: GoogleFonts.dmSerifTextTextTheme(Theme.of(context).textTheme)),
     );
   }
 }

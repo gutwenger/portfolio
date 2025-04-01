@@ -1,6 +1,8 @@
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_portfolio/features/landing/widgets/landing_call_to_actions.dart';
+import 'package:my_portfolio/features/landing/widgets/landing_subtitle.dart';
+import 'package:my_portfolio/features/landing/widgets/landing_title.dart';
 
 class LandingScreen extends ConsumerStatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
@@ -13,17 +15,16 @@ class _LandingScreenState extends ConsumerState<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Portfolio')),
       body: Center(
         child: Column(
+          spacing: 20,
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text('Welcome to My Portfolio!'),
-            TextButton(onPressed: () => context.beamToNamed('/projects'), child: const Text('Projects')),
-            TextButton(onPressed: () => context.beamToNamed('/experience'), child: const Text('Experience')),
-            TextButton(onPressed: () => context.beamToNamed('/education'), child: const Text('Education')),
-            TextButton(onPressed: () => context.beamToNamed('/skills'), child: const Text('Skills')),
-            TextButton(onPressed: () => context.beamToNamed('/contact'), child: const Text('Contact')),
+            // Title
+            const LandingTitle(),
+            const LandingSubTitle(),
+            const LandingCallToActions(),
           ],
         ),
       ),
