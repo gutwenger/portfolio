@@ -13,7 +13,7 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.19.6" # Use your desired Flutter version
+          flutter-version: "3.29.2" # Use your desired Flutter version
 
       - run: flutter pub get
       - run: flutter build web --release
