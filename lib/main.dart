@@ -19,7 +19,47 @@ Future<void> _preloadFonts() async {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _preloadFonts();
-  runApp(ProviderScope(child: MyApp()));
+  runApp(ProviderScope(child: AppLoader()));
+}
+
+class AppLoader extends StatefulWidget {
+  const AppLoader({super.key});
+
+  @override
+  State<AppLoader> createState() => _AppLoaderState();
+}
+
+class _AppLoaderState extends State<AppLoader> {
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Display splash screen for 3 seconds; adjust duration as needed.
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _isLoading ? MaterialApp(debugShowCheckedModeBanner: false, home: SplashPage()) : MyApp();
+  }
+}
+
+class SplashPage extends StatelessWidget {
+  const SplashPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // Use the same background color as your app if needed.
+      backgroundColor: Colors.white,
+      body: Center(child: CircularProgressIndicator()),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
