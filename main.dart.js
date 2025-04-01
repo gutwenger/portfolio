@@ -55485,7 +55485,7 @@ A.rs.prototype={
 a8(){return new A.GR()}}
 A.GR.prototype={
 N(a){var s=null
-return A.nA(s,s,A.hU(A.mI(A.b([B.yt,new A.rt(s),B.yr],t.E),B.ac,B.aT,B.aU,52),s,s))}}
+return A.nA(s,B.i,A.hU(A.mI(A.b([B.yt,new A.rt(s),B.yr],t.E),B.ac,B.aT,B.aU,52),s,s))}}
 A.rq.prototype={
 a8(){var s=t.N
 return new A.GQ(A.b([A.aC(["label","Projects","route","/projects"],s,s),A.aC(["label","Experience","route","/experience"],s,s),A.aC(["label","Connect","route","/contact"],s,s)],t.A7),null,null)}}
